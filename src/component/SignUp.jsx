@@ -7,10 +7,10 @@ import {
   InputAdornment,
   IconButton,
 } from "@mui/material";
-
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import SignUpImage from "../../public/images/signin-bg.jpg";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -76,36 +76,13 @@ const SignUp = () => {
 
   return (
     <Box
-      sx={{
-        width: "100%",
-        height: "100vh",
+      className="signup-container"
+      style={{
         backgroundImage: `url(${SignUpImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
       }}
     >
-      <Box
-        sx={{
-          width: 425,
-          padding: 4,
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
-          borderRadius: 2,
-          boxShadow: 3,
-        }}
-      >
-        <Typography
-          variant="h4"
-          gutterBottom
-          sx={{
-            fontSize: { xs: "1.8rem", sm: "2rem", md: "2.5rem" },
-            textAlign: "center",
-          }}
-        >
-          Sign Up
-        </Typography>
+      <Box className="signup-box">
+        <Typography className="signup-title">Sign Up</Typography>
         <form onSubmit={handleSubmit}>
           <TextField
             fullWidth
@@ -115,7 +92,7 @@ const SignUp = () => {
             onChange={handleChange}
             error={!!error.name}
             helperText={error.name}
-            sx={{ mb: 2, filter: "none" }}
+            className="signup-field"
           />
           <TextField
             fullWidth
@@ -126,7 +103,7 @@ const SignUp = () => {
             onChange={handleChange}
             error={!!error.email}
             helperText={error.email}
-            sx={{ mb: 2, filter: "none" }}
+            className="signup-field"
           />
           <TextField
             fullWidth
@@ -137,7 +114,7 @@ const SignUp = () => {
             onChange={handleChange}
             error={!!error.password}
             helperText={error.password}
-            sx={{ mb: 2, filter: "none" }}
+            className="signup-field"
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -157,7 +134,7 @@ const SignUp = () => {
             onChange={handleChange}
             error={!!error.confirmPassword}
             helperText={error.confirmPassword}
-            sx={{ mb: 2, filter: "none" }}
+            className="signup-field"
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -175,33 +152,14 @@ const SignUp = () => {
               ),
             }}
           />
-          <Button
-            type="submit"
-            variant="contained"
-            fullWidth
-            sx={{
-              padding: "10px",
-              mt: 2,
-              backgroundColor: "#088076",
-              "&:hover": {
-                backgroundColor: "#06635A",
-              },
-            }}
-          >
+          <Button type="submit" variant="contained" className="signup-button">
             Sign Up
           </Button>
         </form>
         <Box mt={2}>
           <Typography>
             Already have an account?{" "}
-            <span
-              onClick={() => navigate("/login")}
-              style={{
-                color: "#4cb5ad",
-                cursor: "pointer",
-                textDecoration: "underline",
-              }}
-            >
+            <span className="login-link" onClick={() => navigate("/login")}>
               Login
             </span>
           </Typography>
