@@ -24,7 +24,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let valid = true;
-    const newError = { email: "", password: "" };
+    const newError = { email: " ", password: " " };
 
     if (!/\S+@\S+\.\S+/.test(email)) {
       newError.email = "Invalid email format.";
