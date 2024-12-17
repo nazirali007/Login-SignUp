@@ -8,11 +8,64 @@ import {
   IconButton,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import SignUpImage from "../../public/images/signin-bg.jpg";
+import SignUpImage from "/images/sign-Up-Bg.jpg";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
 
 const SignUp = () => {
+  const styles = {
+    container: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      minHeight: "100vh",
+      backgroundImage: `url(${SignUpImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      padding: "1rem",
+    },
+    formContainer: {
+      backgroundColor: "rgba(255, 255, 255, 0.9)",
+      padding: "2rem",
+      borderRadius: "8px",
+      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
+      maxWidth: "400px",
+      width: "100%",
+    },
+    title: {
+      textAlign: "center",
+      fontSize: "1.5rem",
+      fontWeight: "bold",
+      color: "#333",
+      marginBottom: "1.5rem",
+    },
+    textField: {
+      marginBottom: "1rem",
+    },
+    button: {
+      backgroundColor: "#1976d2",
+      color: "white",
+      fontWeight: "bold",
+      textTransform: "none",
+      width: "100%",
+      padding: "0.75rem 1rem",
+      borderRadius: "4px",
+      backgroundColor: "#088076",
+      "&:hover": {
+        backgroundColor: "#06635A",
+      },
+    },
+    footer: {
+      textAlign: "center",
+      marginTop: "1rem",
+    },
+    footerLink: {
+      color: "#4cb5ad",
+      cursor: "pointer",
+      textDecoration: "underline",
+      fontWeight: "bold",
+    },
+  };
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -75,14 +128,9 @@ const SignUp = () => {
   };
 
   return (
-    <Box
-      className="signup-container"
-      style={{
-        backgroundImage: `url(${SignUpImage})`,
-      }}
-    >
-      <Box className="signup-box">
-        <Typography className="signup-title">Sign Up</Typography>
+    <Box style={styles.container}>
+      <Box style={styles.formContainer}>
+        <Typography style={styles.title}>Sign Up</Typography>
         <form onSubmit={handleSubmit}>
           <TextField
             fullWidth
@@ -92,7 +140,7 @@ const SignUp = () => {
             onChange={handleChange}
             error={!!error.name}
             helperText={error.name}
-            className="signup-field"
+            style={styles.textField}
           />
           <TextField
             fullWidth
@@ -103,7 +151,7 @@ const SignUp = () => {
             onChange={handleChange}
             error={!!error.email}
             helperText={error.email}
-            className="signup-field"
+            style={styles.textField}
           />
           <TextField
             fullWidth
@@ -114,7 +162,7 @@ const SignUp = () => {
             onChange={handleChange}
             error={!!error.password}
             helperText={error.password}
-            className="signup-field"
+            style={styles.textField}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -134,7 +182,7 @@ const SignUp = () => {
             onChange={handleChange}
             error={!!error.confirmPassword}
             helperText={error.confirmPassword}
-            className="signup-field"
+            style={styles.textField}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -152,14 +200,19 @@ const SignUp = () => {
               ),
             }}
           />
-          <Button type="submit" variant="contained" className="signup-button">
-            Sign Up
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={styles.button}
+          >
+            SignUp
           </Button>
         </form>
-        <Box mt={2}>
-          <Typography>
+        <Box>
+          <Typography style={styles.footer}>
             Already have an account?{" "}
-            <span className="login-link" onClick={() => navigate("/login")}>
+            <span style={styles.footerLink} onClick={() => navigate("/login")}>
               Login
             </span>
           </Typography>
